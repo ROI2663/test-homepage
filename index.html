@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社◯◯ | Web制作・システム開発</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="header__logo">◯◯<span>Corp</span></a>
+      <nav class="header__nav" id="nav">
+        <ul>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#reasons">選ばれる理由</a></li>
+          <li><a href="#cases">事例</a></li>
+          <li><a href="#voice">お客様の声</a></li>
+          <li><a href="#about">会社概要</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn--accent header__cta">無料相談する</a>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="container hero__content">
+      <p class="hero__label">Web制作・システム開発 BtoB特化</p>
+      <h1 class="hero__title">速く、安く、確実に。<br>あなたのビジネスを<br><span>Webで加速させる。</span></h1>
+      <p class="hero__sub">最短7日納品・業界最安水準の料金で、貴社の課題をスピード解決。<br>まずはお気軽に無料相談からどうぞ。</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--accent btn--lg">無料相談・見積もり</a>
+        <a href="#services" class="btn btn--outline btn--lg">サービスを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METRICS ========== -->
+  <section class="metrics">
+    <div class="container metrics__grid">
+      <div class="metrics__item">
+        <span class="metrics__num">50<small>+</small></span>
+        <span class="metrics__label">制作実績件数</span>
+      </div>
+      <div class="metrics__item">
+        <span class="metrics__num">7<small>日〜</small></span>
+        <span class="metrics__label">最短納品スピード</span>
+      </div>
+      <div class="metrics__item">
+        <span class="metrics__num">4.8<small>/5</small></span>
+        <span class="metrics__label">顧客満足度</span>
+      </div>
+      <div class="metrics__item">
+        <span class="metrics__num">80<small>%+</small></span>
+        <span class="metrics__label">リピート・紹介率</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Services</p>
+        <h2 class="section__title">サービス紹介</h2>
+        <p class="section__desc">貴社の課題に合わせた最適なWeb制作・開発サービスを提供します。</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__icon">🖥️</div>
+          <h3 class="card__title">コーポレートサイト制作</h3>
+          <p class="card__text">企業の信頼性・集客力を高める洗練されたコーポレートサイトを制作。SEO対策・スマホ対応も標準搭載。</p>
+          <ul class="card__list">
+            <li>最短7日〜納品</li>
+            <li>レスポンシブ対応</li>
+            <li>CMS導入オプションあり</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card__icon">🛒</div>
+          <h3 class="card__title">LP・ECサイト構築</h3>
+          <p class="card__text">コンバージョン重視のランディングページ、使いやすいECサイトを構築。売上に直結するUI設計を提供。</p>
+          <ul class="card__list">
+            <li>A/Bテスト設計対応</li>
+            <li>決済システム導入</li>
+            <li>分析タグ設置</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card__icon">⚙️</div>
+          <h3 class="card__title">業務システム・API開発</h3>
+          <p class="card__text">社内業務の効率化・自動化を実現する業務システムやAPIを開発。既存システムとの連携も対応。</p>
+          <ul class="card__list">
+            <li>要件定義からサポート</li>
+            <li>クラウド対応</li>
+            <li>保守・運用プランあり</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card__icon">🔧</div>
+          <h3 class="card__title">保守・運用サポート</h3>
+          <p class="card__text">納品後も安心のサポート体制。月額定額プランでサーバー管理・コンテンツ更新・セキュリティ対応を提供。</p>
+          <ul class="card__list">
+            <li>月額定額プラン</li>
+            <li>迅速な障害対応</li>
+            <li>定期レポート提供</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REASONS ========== -->
+  <section class="section section--dark" id="reasons">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Why Us</p>
+        <h2 class="section__title">選ばれる3つの理由</h2>
+      </div>
+      <div class="reasons__grid">
+        <div class="reason">
+          <div class="reason__num">01</div>
+          <h3 class="reason__title">圧倒的スピード</h3>
+          <p class="reason__text">テンプレートを使わず、最適化されたワークフローで最短7日納品を実現。競合他社より2〜3倍速い対応力で、ビジネスチャンスを逃しません。</p>
+        </div>
+        <div class="reason">
+          <div class="reason__num">02</div>
+          <h3 class="reason__title">業界最安水準のコスト</h3>
+          <p class="reason__text">大手エージェンシーの1/3〜1/2の料金で同水準の品質を提供。無駄なコストを削ぎ落とした透明性の高い料金体系で、予算管理が簡単。</p>
+        </div>
+        <div class="reason">
+          <div class="reason__num">03</div>
+          <h3 class="reason__title">確実な品質と安心保証</h3>
+          <p class="reason__text">要件定義から納品・保守まで一貫対応。万が一の修正も無制限サポート（条件あり）で、安心して任せられる体制を整えています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CASES ========== -->
+  <section class="section" id="cases">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Cases</p>
+        <h2 class="section__title">制作事例</h2>
+        <p class="section__desc">様々な業種・規模の企業様のWeb課題を解決してきました。</p>
+      </div>
+      <div class="cases__grid">
+        <div class="case-card">
+          <div class="case-card__img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="製造業 コーポレートサイト事例">
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">製造業</span>
+            <h3 class="case-card__title">老舗製造業のコーポレートサイトリニューアル</h3>
+            <p class="case-card__text">20年以上更新されていなかったサイトをモダンにリニューアル。問い合わせ数が2倍に増加。</p>
+            <p class="case-card__meta">納期：14日 / スマホ対応 / SEO施策込み</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-card__img">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="小売業 ECサイト事例">
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">小売業</span>
+            <h3 class="case-card__title">BtoB卸売ECサイトの新規構築</h3>
+            <p class="case-card__text">受発注業務をオンライン化し、月40時間の業務削減を実現。担当者から「もっと早く頼めばよかった」とのお声。</p>
+            <p class="case-card__meta">納期：21日 / 決済連携 / 管理画面付き</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-card__img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="サービス業 業務システム事例">
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">サービス業</span>
+            <h3 class="case-card__title">予約管理システムのスクラッチ開発</h3>
+            <p class="case-card__text">既存の予約台帳をシステム化。ダブルブッキング0件・顧客満足度向上を達成。</p>
+            <p class="case-card__meta">納期：30日 / API連携 / クラウド対応</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VOICE ========== -->
+  <section class="section section--dark" id="voice">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Testimonials</p>
+        <h2 class="section__title">お客様の声</h2>
+      </div>
+      <div class="voice__grid">
+        <div class="voice-card">
+          <div class="voice-card__stars">★★★★★</div>
+          <p class="voice-card__text">「スピードに驚きました。見積もりから納品まで2週間、しかも想定より30%安く仕上げてもらえました。次のプロジェクトもお願いします。」</p>
+          <div class="voice-card__author">
+            <div class="voice-card__avatar">A</div>
+            <div>
+              <p class="voice-card__name">A.T. 様</p>
+              <p class="voice-card__company">製造業・総務部長</p>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card__stars">★★★★★</div>
+          <p class="voice-card__text">「他社に断られた短納期の案件も快く引き受けてもらえました。技術力が高く、こちらの要望を的確に形にしてくれる貴重なパートナーです。」</p>
+          <div class="voice-card__author">
+            <div class="voice-card__avatar">B</div>
+            <div>
+              <p class="voice-card__name">B.K. 様</p>
+              <p class="voice-card__company">不動産業・代表取締役</p>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card__stars">★★★★☆</div>
+          <p class="voice-card__text">「料金が明確で追加費用が一切なく安心でした。納品後のサポートも丁寧で、社内のWeb担当がいなくても運用できています。」</p>
+          <div class="voice-card__author">
+            <div class="voice-card__avatar">C</div>
+            <div>
+              <p class="voice-card__name">C.M. 様</p>
+              <p class="voice-card__company">食品メーカー・マーケティング担当</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Company</p>
+        <h2 class="section__title">会社概要</h2>
+      </div>
+      <div class="about__wrap">
+        <table class="about__table">
+          <tr>
+            <th>会社名</th>
+            <td>株式会社◯◯（後から変更予定）</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td>20XX年XX月</td>
+          </tr>
+          <tr>
+            <th>代表者</th>
+            <td>代表取締役 ◯◯ ◯◯</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〒000-0000 東京都◯◯区◯◯ 1-1-1</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>Webサイト制作・開発、業務システム開発、ITコンサルティング</td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td>info@example.com</td>
+          </tr>
+        </table>
+        <div class="about__message">
+          <h3>代表メッセージ</h3>
+          <p>「速く、安く、確実に」という3つのバリューを軸に、中小企業のWeb課題を解決することを使命としています。大手エージェンシーにはできないスピードと柔軟性で、お客様のビジネス成長を全力でサポートします。</p>
+          <p class="about__ceo">代表取締役 ◯◯ ◯◯</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section section--dark" id="contact">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__label">Contact</p>
+        <h2 class="section__title">無料相談・お見積もり</h2>
+        <p class="section__desc">まずはお気軽にご相談ください。24時間以内にご返答します。</p>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">会社名 <span class="required">*</span></label>
+            <input type="text" id="company" name="company" placeholder="株式会社◯◯" required>
+          </div>
+          <div class="form-group">
+            <label for="name">担当者名 <span class="required">*</span></label>
+            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">メールアドレス <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="info@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" placeholder="03-0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">ご相談内容</label>
+          <select id="service" name="service">
+            <option value="">選択してください</option>
+            <option>コーポレートサイト制作</option>
+            <option>LP・ECサイト構築</option>
+            <option>業務システム・API開発</option>
+            <option>保守・運用サポート</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">詳細・ご要望</label>
+          <textarea id="message" name="message" rows="5" placeholder="ご予算・納期・詳細など、お気軽にご記入ください。"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn--accent btn--lg btn--full">無料で相談する</button>
+          <p class="form-note">個人情報は適切に管理し、第三者への提供は行いません。</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="header__logo">◯◯<span>Corp</span></a>
+        <p>速く、安く、確実に。<br>あなたのビジネスをWebで加速させる。</p>
+      </div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">サービス</p>
+          <ul>
+            <li><a href="#services">コーポレートサイト制作</a></li>
+            <li><a href="#services">LP・ECサイト構築</a></li>
+            <li><a href="#services">業務システム開発</a></li>
+            <li><a href="#services">保守・運用サポート</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">会社情報</p>
+          <ul>
+            <li><a href="#about">会社概要</a></li>
+            <li><a href="#voice">お客様の声</a></li>
+            <li><a href="#cases">制作事例</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">お問い合わせ</p>
+          <ul>
+            <li><a href="#contact">無料相談・見積もり</a></li>
+            <li><a href="mailto:info@example.com">info@example.com</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 株式会社◯◯. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
