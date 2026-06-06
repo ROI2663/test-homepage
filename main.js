@@ -81,3 +81,127 @@ fadeEls.forEach(el => {
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   fadeObserver.observe(el);
 });
+
+// ========== AI CHATBOT ==========
+const chatWidget = document.getElementById('chatWidget');
+const chatBubble = document.getElementById('chatBubble');
+const chatClose = document.getElementById('chatClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+const API_URL = 'http://localhost:3000/api/chat';
+const conversationHistory = [];
+let isSending = false;
+
+function toggleChat() {
+  chatWidget.classList.toggle('open');
+  if (chatWidget.classList.contains('open')) {
+    chatInput.focus();
+  }
+}
+
+chatBubble.addEventListener('click', toggleChat);
+chatClose.addEventListener('click', toggleChat);
+
+function appendMessage(role, text) {
+  const div = document.createElement('div');
+  div.className = `chat-msg chat-msg--${role === 'user' ? 'user' : 'bot'}`;
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-msg__bubble';
+  bubble.textContent = text;
+  div.appendChild(bubble);
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return bubble;
+}
+
+function showTyping() {
+  const div = document.createElement('div');
+  div.className = 'chat-msg chat-msg--typing';
+  div.id = 'typingIndicator';
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-msg__bubble';
+  bubble.textContent = '入力中...';
+  div.appendChild(bubble);
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text || isSending) return;
+
+  isSending = true;
+  chatSend.disabled = true;
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+
+  appendMessage('user', text);
+  conversationHistory.push({ role: 'user', content: text });
+  showTyping();
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: conversationHistory }),
+    });
+
+    if (!res.ok) throw new Error('Server error');
+
+    removeTyping();
+    const bubble = appendMessage('assistant', '');
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value, { stream: true });
+      const lines = chunk.split('\n');
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6);
+        if (data === '[DONE]') break;
+        try {
+          const parsed = JSON.parse(data);
+          if (parsed.text) {
+            fullText += parsed.text;
+            bubble.textContent = fullText;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+        } catch {}
+      }
+    }
+
+    conversationHistory.push({ role: 'assistant', content: fullText });
+  } catch (err) {
+    removeTyping();
+    appendMessage('assistant', '申し訳ありません。現在チャットをご利用いただけません。お問い合わせフォームよりご連絡ください。');
+    console.error(err);
+  } finally {
+    isSending = false;
+    chatSend.disabled = false;
+    chatInput.focus();
+  }
+}
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+chatInput.addEventListener('input', () => {
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+});
