@@ -1,12 +1,6 @@
 {
   "name": "test-homepage",
   "version": "1.0.0",
-  "description": "Corporate homepage with AI chatbot",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
-  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
     "cors": "^2.8.5",
