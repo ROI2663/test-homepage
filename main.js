@@ -156,32 +156,10 @@ async function sendMessage() {
     if (!res.ok) throw new Error('Server error');
 
     removeTyping();
-    const bubble = appendMessage('assistant', '');
-    const reader = res.body.getReader();
-    const decoder = new TextDecoder();
-    let fullText = '';
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      const chunk = decoder.decode(value, { stream: true });
-      const lines = chunk.split('\n');
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const data = line.slice(6);
-        if (data === '[DONE]') break;
-        try {
-          const parsed = JSON.parse(data);
-          if (parsed.text) {
-            fullText += parsed.text;
-            bubble.textContent = fullText;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-          }
-        } catch {}
-      }
-    }
-
-    conversationHistory.push({ role: 'assistant', content: fullText });
+    const data = await res.json();
+    const text = data.text || '';
+    appendMessage('assistant', text);
+    conversationHistory.push({ role: 'assistant', content: text });
   } catch (err) {
     removeTyping();
     appendMessage('assistant', '申し訳ありません。現在チャットをご利用いただけません。お問い合わせフォームよりご連絡ください。');

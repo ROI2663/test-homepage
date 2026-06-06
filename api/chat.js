@@ -44,34 +44,24 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'messages is required' });
   }
 
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
   try {
-    const stream = await client.messages.stream({
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+    const response = await client.messages.create({
       model: 'claude-opus-4-8',
       max_tokens: 1024,
-      thinking: { type: 'adaptive' },
       system: SYSTEM_PROMPT,
       messages,
     });
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
+    const text = response.content
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('');
 
-    for await (const event of stream) {
-      if (
-        event.type === 'content_block_delta' &&
-        event.delta.type === 'text_delta'
-      ) {
-        res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
-      }
-    }
-
-    res.write('data: [DONE]\n\n');
-    res.end();
+    res.status(200).json({ text });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'API error' });
+    res.status(500).json({ error: err.message || 'API error' });
   }
 };
