@@ -153,7 +153,10 @@ async function sendMessage() {
       body: JSON.stringify({ messages: conversationHistory }),
     });
 
-    if (!res.ok) throw new Error('Server error');
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errText}`);
+    }
 
     removeTyping();
     const data = await res.json();
@@ -162,7 +165,7 @@ async function sendMessage() {
     conversationHistory.push({ role: 'assistant', content: text });
   } catch (err) {
     removeTyping();
-    appendMessage('assistant', '申し訳ありません。現在チャットをご利用いただけません。お問い合わせフォームよりご連絡ください。');
+    appendMessage('assistant', `[デバッグ用エラー] ${err.message}`);
     console.error(err);
   } finally {
     isSending = false;
