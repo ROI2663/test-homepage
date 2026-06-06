@@ -90,7 +90,7 @@ const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 
-const API_URL = 'http://localhost:3000/api/chat';
+const API_URL = '/api/chat';
 const conversationHistory = [];
 let isSending = false;
 
